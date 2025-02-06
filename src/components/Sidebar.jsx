@@ -1,3 +1,5 @@
+"use client"
+import { useState } from 'react'
 import React from 'react'
 import Image from 'next/image'
 import { FaChevronDown, FaBars, FaPlus, FaSearch, FaDatabase, FaTerminal, FaPowerOff } from 'react-icons/fa'
@@ -6,6 +8,9 @@ import { LuNotebookText, LuFiles } from 'react-icons/lu'
 
 const Sidebar = ({ mainPages }) => {
   mainPages = false;
+  const [machine, setMachine] = useState("Basic 2v CPUs, 5GB Memory ");
+  const [language, setLanguage] = useState("Python 3.8");
+
   return (
     <div className="flex flex-col border-r-2 border-gray-300 h-screen w-full">
       <div className="flex justify-between items-center p-2 border-b-2 border-gray-300">
@@ -79,29 +84,27 @@ const Sidebar = ({ mainPages }) => {
       {/* Fixed bottom section */}
       <div className="flex flex-col justify-center items-start w-full p-4 gap-4 bg-white sticky bottom-0">
         <h3 className="font-bold">Machine</h3>
-        <select>
-          <option selected value="basic" className="flex flex-col justify-center items-start">
-            <p className="font-bold">Basic</p>
-            <p>2v CPUs, 5GB Memory</p> 
+        <select value={machine} onChange={(e) => {setMachine(e.target.value)}}>
+          <option value="basic" className="flex flex-col justify-center items-start font-bold w-50%">
+            Basic 2v CPUs, 5GB Memory 
           </option>
-          <option value="professional" className="flex flex-col justify-center items-start">
-            <p className="font-bold">Professional</p>
-            <p>2v CPUs, 10GB Memory</p>
+          <option value="professional" className="flex flex-col justify-center items-start font-bold">
+            Professional 2v CPUs, 10GB Memory
+            
           </option>
-          <option value="advanced" className="flex flex-col justify-center items-start">
-            <p className="font-bold">Advanced</p>
-            <p>4v CPUs, 15GB Memory</p>
+          <option value="advanced" className="flex flex-col justify-center items-start font-bold">
+            Advanced 4v CPUs, 15GB Memory
           </option>
         </select>
-        <select>
-          <option selected value="basic" className="flex flex-col justify-center items-start">
-            <p className="font-bold">Python 3.11 for data sciences</p>
+        <select value={"basic"} onChange={(e) => {setLanguage(e.target.value)}}>
+          <option value="basic" className="flex flex-col justify-center items-start font-bold">
+            Python 3.11 for data sciences
           </option>
-          <option value="professional" className="flex flex-col justify-center items-start">
-            <p className="font-bold">Anaconda-Python 3.8</p>
+          <option value="professional" className="flex flex-col justify-center items-start font-bold">
+            Anaconda-Python 3.8
           </option>
-          <option value="advanced" className="flex flex-col justify-center items-start">
-            <p className="font-bold">Python 3.8</p>
+          <option value="advanced" className="flex flex-col justify-center items-start font-bold">
+            Python 3.8
           </option>
         </select>
         <div className='flex justify-between items-center w-full '>
